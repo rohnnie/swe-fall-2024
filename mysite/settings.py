@@ -29,7 +29,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "127.0.0.1:8000",
-    "http://django-app-env2.eba-2kkjqdcc.us-west-2.elasticbeanstalk.com/",
+    "swe-fall-2024.us-west-2.elasticbeanstalk.com",
     ".elasticbeanstalk.com",
 ]
 

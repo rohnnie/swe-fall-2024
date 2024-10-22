@@ -1,0 +1,32 @@
+dist: focal
+
+language: python
+python:
+- "3.11"
+
+
+install:
+  - pip install -r requirements.txt
+
+script:
+- black --check .
+- flake8 --max-line-length=150 --exclude=venv --ignore=E261,F821,W293,W503 .
+- coverage run manage.py test
+- env
+
+
+after_scripts:
+- coveralls
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ID
+  secret_access_key: $AWS_KEY
+  region: us-west-2
+  app: swe-fall-2024
+  env: swe-fall-2024
+  bucket_name: elasticbeanstalk-us-west-2-992382558053
+  on:
+    repo: rohnnie/swe-fall-2024
+    branch: main
+  skip_cleanup: 'true'
